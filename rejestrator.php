@@ -6,6 +6,7 @@
     </head>
     <body>
 
+
 <?php
 
 $user_fullname = $user_email = $user_password = $currentname = $currentemail ="";
@@ -17,11 +18,11 @@ function chgw($dane)
     $dane = htmlspecialchars($dane);
     return $dane;
 }
-
 $servername = "mysql.agh.edu.pl";
 $username = "alstec1";
 $dbpassword = "YtWY47MrHUsvfZ8g";
 $dbname = "alstec1";
+
 
 $dbconn = mysqli_connect($servername, $username, $dbpassword, $dbname);
 
@@ -80,6 +81,7 @@ $dbconn = mysqli_connect($servername, $username, $dbpassword, $dbname);
         echo "<br>" .$imErr. " " .$mailErr. " " .$passErr. " " .$freeimErr. " ".$freemailErr. " ";
     }
 ?>
+
 
 </body>
 </html>

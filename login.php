@@ -5,9 +5,9 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Domowa Apteczka</title>
+        <title>Cukrzyca w ciązy</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="style2.css" type="text/css" />
     </head>
     <body>  
 
@@ -35,6 +35,22 @@ if (mysqli_num_rows($query)>0) {
     }
 }
 
+$current_user = $_SESSION["current_user"];
+
+
 
 
 ?>
+<div id="second-elipse"></div>
+<div id="first-elipse"></div>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
+
+
+</body>
+</html>
