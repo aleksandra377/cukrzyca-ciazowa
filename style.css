@@ -1,0 +1,108 @@
+body {
+    position: absolute;
+    width: 1366px;
+    height: 768px;
+    left: -244px;
+    top: -27px;
+
+    background: url(pexels-garon-piceli-2100340.jpg);  
+    background-size: 100%; 
+}
+
+
+/* Cukrzyca w ciąży */
+#tytul-index{
+    position: absolute;
+width: 1087px;
+height: 275px;
+left: 416px;
+top: 150px;
+
+font-family: 'Inria Serif';
+font-style: normal;
+font-weight: 400;
+font-size: 96px;
+line-height: 115px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+
+#podtytul-index{
+    position: absolute;
+    width: 789px;
+    height: 43px;
+    left: 610px;
+    top: 261px;
+    
+    font-family: 'Inria Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+#zaloguj{
+position: absolute;
+width: 370px;
+height: 99px;
+left: 565px;
+top: 425px;
+background: #FCB2E3;
+border-radius: 10px;
+}
+.zaloguj-text a{
+position: absolute;
+left: 28%;
+right: 0%;
+top: 6%;
+bottom: 0%;
+text-decoration: none;
+font-family: 'Inria Serif';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 43px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;}
+
+
+
+#zarejestruj{
+    position: absolute;
+width: 338px;
+height: 99px;
+left: 1043px;
+top: 425px;
+border-radius: 10px;
+background:#FCB2E3;
+}
+
+.zarejestruj-text a{
+position: absolute;
+left: 20%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+text-decoration: none;
+font-family: 'Inria Serif';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 43px;
+display: flex;
+align-items: center;
+text-align: center;
+
+
+color: #000000;
+}
+
