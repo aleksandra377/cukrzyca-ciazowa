@@ -9,9 +9,9 @@
 
 
         <form method="POST" action ="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <input type = "text" name = "name" placeholder = "Imię i nazwisko"> 
-            <input type = "email" name = "email" placeholder = "E-mail"> 
-            <input type = "password" name = "password" placeholder = "Hasło">
+            <input type = "text" name = "name" placeholder = "Imię i nazwisko"> <br>
+            <input type = "email" name = "email" placeholder = "E-mail"> <br>
+            <input type = "password" name = "password" placeholder = "Hasło"> <br>
             <br>
             <input type = "submit" name = "submit" value = "Zarejestruj">
            
