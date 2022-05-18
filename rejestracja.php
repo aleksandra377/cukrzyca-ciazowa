@@ -9,9 +9,9 @@
 
 
         <form method="POST" action ="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <input type = "text" name = "name" placeholder = "Imię i nazwisko"> <br>
-            <input type = "email" name = "email" placeholder = "E-mail"> <br>
-            <input type = "password" name = "password" placeholder = "Hasło"> <br>
+            <input type = "text" name = "name" placeholder = "Imię i nazwisko"> 
+            <input type = "email" name = "email" placeholder = "E-mail"> 
+            <input type = "password" name = "password" placeholder = "Hasło">
             <br>
             <input type = "submit" name = "submit" value = "Zarejestruj">
            
@@ -81,15 +81,20 @@ $dbconn = mysqli_connect($servername, $username, $dbpassword, $dbname);
     $user_email = mysqli_real_escape_string($dbconn, $email);
     $user_password = mysqli_real_escape_string($dbconn, $password);
 
+    $user_gl = $user_fullname. "_glikemia";
+
     $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
     if((isset($name) and isset($password)) and isset($email)){
-        mysqli_query($dbconn, "INSERT INTO users (user_fullname, user_email, user_passwordhash)
-         VALUES ('$user_fullname', '$user_email', '$user_password_hash')");
+        mysqli_query($dbconn, "INSERT INTO users (user_fullname, user_email, user_passwordhash, gl_pomiary)
+         VALUES ('$user_fullname', '$user_email', '$user_password_hash', '$user_gl')");
         echo "Rejestracja przebiegła poprawnie <br/><br/>";
     } else {
         echo "<br>" .$imErr. " " .$mailErr. " " .$passErr. " " .$freeimErr. " ".$freemailErr. " ";
     }
+
+    mysqli_query($dbconn,"CREATE TABLE $user_gl (pomiar INT(100), data_pom DATE)");
+    
 ?>
 
 <hr style="width: 20%;">

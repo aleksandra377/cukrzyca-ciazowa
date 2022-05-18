@@ -7,17 +7,16 @@ session_start();
     <head>
         <title>Cukrzyca w ciązy</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="style2.css" type="text/css" />
     </head>
     <body>  
-
-   <h1> Twój profil </h1>
 
         <?php
 
 $servername = "mysql.agh.edu.pl";
-$username = "sarzyns2";
-$dbpassword = "5cRboJMsRq7SxzR5";
-$dbname = "sarzyns2";
+$username = "alstec1";
+$dbpassword = "YtWY47MrHUsvfZ8g";
+$dbname = "alstec1";
 
 
 $dbconn = mysqli_connect($servername, $username, $dbpassword, $dbname);
@@ -33,26 +32,25 @@ if (mysqli_num_rows($query)>0) {
     if(password_verify($user_password, $hash))
     {
         $_SESSION["current_user"] = $record["user_fullname"];
-        $_SESSION["current_gl_table"] = $record["gl_pomiary"];
     }
 }
 
 $current_user = $_SESSION["current_user"];
 
-echo "Witaj $current_user !";
+
 
 
 ?>
+<div id="second-elipse"></div>
+<div id="first-elipse"></div>
 
-<h2> Glikemia </h2>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
 
-<a href = "./dzienniczekglikemia.php"> Twoje pomiary</a> <br>
-<a href = "./nowypomiarglikemia.php"> Dodaj nowy pomiar</a> <br>
-
-<h2> Masa ciała </h2>
-
-<a href = "./dzienniczekmasa.php"> Twoje pomiary</a> <br>
-<a href = "./nowypomiarmasa.php"> Dodaj nowy pomiar</a> <br>
 
 </body>
 </html>
