@@ -12,6 +12,7 @@
             <input type = "text" name = "name" placeholder = "Imię i nazwisko"> 
             <input type = "email" name = "email" placeholder = "E-mail"> 
             <input type = "password" name = "password" placeholder = "Hasło">
+            <input type = "text" name ="pregnancy-week" placeholder = "Tydzień ciąży">
             <br>
             <input type = "submit" name = "submit" value = "Zarejestruj">
            
@@ -19,7 +20,7 @@
 
 <?php
 
-$user_fullname = $user_email = $user_password = $currentname = $currentemail ="";
+$user_fullname = $user_email = $user_password = $currentname = $currentemail = $pregweek = "";
 
 function chgw($dane)
 {
@@ -75,19 +76,27 @@ $dbconn = mysqli_connect($servername, $username, $dbpassword, $dbname);
         else{
             $password = chgw($_POST["password"]);
         }
+        if (empty($_POST["pregnancy-week"]))
+        {
+            $pregErr = "Podaj tydzień ciązy!!";
+        }
+        else{
+            $pregweek = chgw($_POST["pregnancy-week"]);
+        }
     }
 
     $user_fullname = mysqli_real_escape_string($dbconn, $name);
     $user_email = mysqli_real_escape_string($dbconn, $email);
     $user_password = mysqli_real_escape_string($dbconn, $password);
+    $user_preg_week = mysqli_real_escape_string($dbconn, $pregweek);
 
     $user_gl = $user_fullname. "_glikemia";
 
     $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
     if((isset($name) and isset($password)) and isset($email)){
-        mysqli_query($dbconn, "INSERT INTO users (user_fullname, user_email, user_passwordhash, gl_pomiary)
-         VALUES ('$user_fullname', '$user_email', '$user_password_hash', '$user_gl')");
+        mysqli_query($dbconn, "INSERT INTO users (user_fullname, user_email, user_passwordhash, gl_pomiary, user_preg_week)
+         VALUES ('$user_fullname', '$user_email', '$user_password_hash', '$user_gl', '$user_preg_week')");
         echo "Rejestracja przebiegła poprawnie <br/><br/>";
     } else {
         echo "<br>" .$imErr. " " .$mailErr. " " .$passErr. " " .$freeimErr. " ".$freemailErr. " ";

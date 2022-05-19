@@ -47,7 +47,7 @@ if (mysqli_num_rows($result) > 0){
 } else {
         echo " brak wyników!";
     }
-    mysqli_close($dbconn);
+    
     ?>
 </table> 
 
@@ -59,6 +59,45 @@ if (mysqli_num_rows($result) > 0){
 <br><br>
 <a href = "./login.php"> Powrót do profilu</a> <br>
 
+
+<?php
+# w normie wyswietlanie wynikow
+$wyswietlanie_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` <= 90 && `pomiar` >= 70";
+$result_wyswietlanie_norma = mysqli_query($dbconn, $wyswietlanie_norma);
+
+if (mysqli_num_rows($result_wyswietlanie_norma) > 0){
+    while($row = mysqli_fetch_assoc($result_wyswietlanie_norma)){
+        echo"W normie ".$row["total"]." ";
+    }
+}
+echo "<br>";
+# wyswietlanie wynikow ponad norme 
+$wyswietlanie_ponad_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` > 90";
+$result_wyswietlanie_ponad_norma = mysqli_query($dbconn, $wyswietlanie_ponad_norma);
+
+if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
+    while($row = mysqli_fetch_assoc($result_wyswietlanie_ponad_norma)){
+        echo"Ponad normę ".$row["total"]." ";
+    }
+}
+
+echo "<br>";
+# wyswietlanie wynikow ponizej normy
+$wyswietlanie_ponad_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` < 70";
+$result_wyswietlanie_ponad_norma = mysqli_query($dbconn, $wyswietlanie_ponad_norma);
+
+if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
+    while($row = mysqli_fetch_assoc($result_wyswietlanie_ponad_norma)){
+        echo"Ponizej normy ".$row["total"]." ";
+    }
+}
+
+
+
+
+
+mysqli_close($dbconn);
+?>
 
 </body>
 </html>
