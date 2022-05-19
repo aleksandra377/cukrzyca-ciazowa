@@ -54,5 +54,7 @@ echo "Witaj $current_user !";
 <a href = "./dzienniczekmasa.php"> Twoje pomiary</a> <br>
 <a href = "./nowypomiarmasa.php"> Dodaj nowy pomiar</a> <br>
 
+<a href="./wyloguj.php">Wyloguj</a><br>
+
 </body>
 </html>
