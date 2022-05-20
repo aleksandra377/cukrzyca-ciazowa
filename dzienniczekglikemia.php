@@ -34,6 +34,13 @@ session_start();
 
 <div class="w3-teal w3-black">
   <button class="w3-button w3-teal w3-xlarge w3 w3-black" onclick="w3_open()">☰</button>
+  <a href="./login.php" class="w3-bar-item w3-button w3-hover-pink">Strona główna</a>
+  <a href="./wykresglikemii.php" class="w3-bar-item w3-button w3-hover-pink">Wizualizacja pomiarów</a>
+  <a href="./zapisdopliku.php" class="w3-bar-item w3-button w3-hover-pink">Zapisz pomiary do pliku</a>
+  <a href="#" id = "myBtn" class="w3-bar-item w3-button w3-hover-pink">Dodaj nowy pomiar</a>
+
+
+
   <div class="w3-container">
 
   </div>
@@ -81,12 +88,6 @@ if (mysqli_num_rows($result) > 0){
 </table> 
 </div>
 
-<button onclick="location.href = './zapisdopliku.php';" id="myButton" class="float-left submit-button" >Zapisz pomiary do pliku</button>
-<button onclick="location.href = './wykresglikemii.php';" id="myButton" class="float-left submit-button" >Wizualizacja pomiarów</button>
-
- <br>
-
-<br><br>
 
 
 <div id="norma-dis">
@@ -155,6 +156,55 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 </script>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Dodaj nowy pomiar</p>
+    <form method="POST" action ="dodawaniepomimaru.php">
+    Wprowadź pomiar [mg/dL]: <input type = "number" name = "gl_pomiar"><br>
+    Wprowadź datę: <input type = "date" name = "gl_data"><br>
+            <br>
+<input type = "submit" name = "submit" value = "Dodaj pomiar">
+</form>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+
+
 
 </body>
 </html>
