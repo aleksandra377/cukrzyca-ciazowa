@@ -100,6 +100,14 @@ img{
     margin-left: 10%;
   }
 
+  h1{
+    text-align: center;
+    position: relative;
+    font-size: 35px;
+    font-family: 'Playfair Display', serif;
+    padding-top: 2%;
+  }
+
   #linki a {
     position: relative;
 
@@ -110,3 +118,63 @@ img{
   #linki a:hover {
     color: #db9dc6
   }
+
+  #table-pomiary{
+    
+    border: 1px solid;
+    width: 15%;
+    margin-left: 10%;
+    text-align: center;
+  
+    
+  }
+
+  tr{
+    text-align: center;
+  }
+
+  button{
+    color:palevioletred;
+    margin-left: 10.5%;
+
+  }
+
+  #norma-dis{
+    position: absolute;
+    width: 134px;
+    height: 107px;
+    margin-left: 45%;
+    top: 183px;
+    font-family: 'Inria Serif';
+
+background: rgb(167, 215, 148);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+  }
+
+
+ #high-dis{
+  position: absolute;
+  width: 134px;
+  height: 107px;
+  margin-left: 34%;
+  top: 183px;
+  font-family: 'Inria Serif';
+  
+  background: rgb(229, 123, 123);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+ } 
+#low-dis{ 
+position: absolute;
+width: 134px;
+height: 107px;
+margin-left: 56%;
+top: 183px;
+font-family: 'Inria Serif';
+
+
+background: rgb(241, 216, 141);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}

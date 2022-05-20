@@ -12,7 +12,7 @@ session_start();
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="style2.css">
+        <link rel="stylesheet" href="style2.css" type="text/css">
        
 
     </head>
@@ -95,7 +95,7 @@ $current_user = $_SESSION["current_user"];
        
         $preg =$row['user_preg_week'];
 
-          echo  "Jesteś w ".$preg. " tygodniu ciąży"
+          echo  "Jesteś w ".$preg. " tygodniu ciąży";
         }  
     }
     ?>
@@ -106,7 +106,7 @@ $current_user = $_SESSION["current_user"];
 <h2> Glikemia </h2>
 
 <div id="linki">
-<a href = "./dzienniczekglikemia.php"> Twojesss pomiary</a> <br>
+<a href = "./dzienniczekglikemia.php"> Twoje pomiary</a> <br>
 <a href = "./nowypomiarglikemia.php"> Dodaj nowy pomiar</a> <br> 
 </div>
 
