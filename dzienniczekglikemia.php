@@ -140,6 +140,25 @@ if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
 
 
 
+<table>
+    <tr>
+        <th>Średnia z ostatniego tygodnia</th>
+    </tr>
+
+    <?php
+
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now()";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        echo"<tr><td>".$row["AVG(`pomiar`)"]." mg/dL"."</td></tr>";}
+    } else {
+        echo "Brak rekordów";
+    }
+?>
+</table> 
+
 <?php
 mysqli_close($dbconn);
 ?>
