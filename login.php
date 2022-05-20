@@ -12,7 +12,7 @@ session_start();
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="style2.css">
+        <link rel="stylesheet" href="style2.css" type="text/css">
        
 
     </head>
@@ -22,9 +22,9 @@ session_start();
 
 <div class="w3-sidebar w3-animate-left w3-bar-block w3-border-right" style="display:none" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large"> Zwiń menu &times;</button>
-  <a href="#" class="w3-bar-item w3-button w3-hover-pink">Pomiary glikemii</a>
-  <a href="#" class="w3-bar-item w3-button  w3-hover-pink">Pomiary masy ciała</a>
-  <a href="#" class="w3-bar-item w3-button  w3-hover-pink">Wyloguj się</a>
+  <a href="./dzienniczekglikemia.php" class="w3-bar-item w3-button w3-hover-pink">Pomiary glikemii</a>
+  <a href="./dzienniczekmasa" class="w3-bar-item w3-button  w3-hover-pink">Pomiary masy ciała</a>
+  <a href="./wyloguj.php" class="w3-bar-item w3-button  w3-hover-pink">Wyloguj się</a>
 </div>
 
 
@@ -95,7 +95,7 @@ $current_user = $_SESSION["current_user"];
        
         $preg =$row['user_preg_week'];
 
-          echo  "Jesteś w ".$preg. " tygodniu ciąży"?> <br> <?php
+          echo  "Jesteś w ".$preg. " tygodniu ciąży";
         }  
     }
     ?>
@@ -104,6 +104,7 @@ $current_user = $_SESSION["current_user"];
 
 <div id = "third-elipse"></div>
 <h2> Glikemia </h2>
+
 <div id="linki">
 <a href = "./dzienniczekglikemia.php"> Twoje pomiary</a> <br>
 <a href = "./nowypomiarglikemia.php"> Dodaj nowy pomiar</a> <br> 
@@ -126,5 +127,7 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 </script>
+
+
 </body>
 </html>
