@@ -95,7 +95,7 @@ if (mysqli_num_rows($result) > 0){
 <div id="norma-dis">
 <?php
 # w normie wyswietlanie wynikow
-$wyswietlanie_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` <= 90 && `pomiar` >= 70";
+$wyswietlanie_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` <= 90 && `pomiar` >= 70  && `meal` = 'Przed posilkiem'  " ;
 $result_wyswietlanie_norma = mysqli_query($dbconn, $wyswietlanie_norma);
 
 if (mysqli_num_rows($result_wyswietlanie_norma) > 0){
@@ -107,11 +107,31 @@ if (mysqli_num_rows($result_wyswietlanie_norma) > 0){
 }
 ?>
 </div>
+
+<div id="norma-dis2">
+<?php
+# w normie wyswietlanie wynikow
+$wyswietlanie_norma2 = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` <= 140  && `meal` = 'Po posilku'  " ;
+$result_wyswietlanie_norma2 = mysqli_query($dbconn, $wyswietlanie_norma2);
+
+if (mysqli_num_rows($result_wyswietlanie_norma2) > 0){
+    while($row = mysqli_fetch_assoc($result_wyswietlanie_norma2)){ ?> 
+        <p1 style="font-size:50px; font-color: black; margin-left:40%"> <?php echo $row["total"]."<br> "; ?> </p1>
+ 
+        <p2 style="font-size:17px; font-color: black; margin-left:23%"> <?php echo " W normie "; ?></p2> <?php
+    }
+}
+?>
+</div>
+
+
+
+
 <div id="high-dis">
 
 <?php
 # wyswietlanie wynikow ponad norme 
-$wyswietlanie_ponad_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` > 90";
+$wyswietlanie_ponad_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` > 90  && `meal` = 'Przed posilkiem'";
 $result_wyswietlanie_ponad_norma = mysqli_query($dbconn, $wyswietlanie_ponad_norma);
 
 if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
@@ -124,14 +144,39 @@ if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
 ?>
 
 </div>
+
+<div id="high-dis2">
+
+<?php
+# wyswietlanie wynikow ponad norme 
+$wyswietlanie_ponad_norma2 = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` > 140  && `meal` = 'Po posilku'";
+$result_wyswietlanie_ponad_norma2 = mysqli_query($dbconn, $wyswietlanie_ponad_norma2);
+
+if (mysqli_num_rows($result_wyswietlanie_ponad_norma2) > 0){
+    while($row = mysqli_fetch_assoc($result_wyswietlanie_ponad_norma2)){    ?> 
+    <p1 style="font-size:50px; font-color: black; margin-left:40%"> <?php echo $row["total"]."<br> "; ?> </p1>
+
+    <p2 style="font-size:17px; font-color: black; margin-left:15%"> <?php echo "Ponad normę "; ?></p2> <?php
+    }
+}
+?>
+
+</div>
+
+
+
+
+
+
+
 <div id = "low-dis">
 <?php
 # wyswietlanie wynikow ponizej normy
-$wyswietlanie_ponad_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` < 70";
-$result_wyswietlanie_ponad_norma = mysqli_query($dbconn, $wyswietlanie_ponad_norma);
+$wyswietlanie_ponizej_norma = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` < 70 && `meal` = 'Przed posilkiem'";
+$result_wyswietlanie_ponizej_norma = mysqli_query($dbconn, $wyswietlanie_ponizej_norma);
 
-if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
-    while($row = mysqli_fetch_assoc($result_wyswietlanie_ponad_norma)){  ?> 
+if (mysqli_num_rows($result_wyswietlanie_ponizej_norma) > 0){
+    while($row = mysqli_fetch_assoc($result_wyswietlanie_ponizej_norma)){  ?> 
        <p1 style="font-size:50px; font-color: black; margin-left:40%"> <?php echo $row["total"]."<br> "; ?> </p1>
 
        <p2 style="font-size:17px; font-color: black; margin-left:15%"> <?php echo "Poniżej normy "; ?></p2> <?php
@@ -142,14 +187,30 @@ if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
 </div>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div id = "low-dis2">
+<?php
+# wyswietlanie wynikow ponizej normy
+$wyswietlanie_ponizej_norma2 = "SELECT COUNT(`pomiar`) as `total` FROM $current_gl_table WHERE `pomiar` < 30 && `meal` = 'Po posilku'";
+$result_wyswietlanie_ponizej_norma2 = mysqli_query($dbconn, $wyswietlanie_ponizej_norma2);
 
+if (mysqli_num_rows($result_wyswietlanie_ponizej_norma2) > 0){
+    while($row = mysqli_fetch_assoc($result_wyswietlanie_ponizej_norma2)){  ?> 
+       <p1 style="font-size:50px; font-color: black; margin-left:40%"> <?php echo $row["total"]."<br> "; ?> </p1>
+
+       <p2 style="font-size:17px; font-color: black; margin-left:15%"> <?php echo "Poniżej normy "; ?></p2> <?php
+        
+    }
+}
+?>
+</div>
+
+
+<h4> Przed posiłkiem </h4>
+<h5> Po posiłku </h5>
+
+
+
+<div id = "average-table">
 <table>
     <tr>
         <th>Średnia z ostatnich 7 dni przed posiłkiem</th>
@@ -255,7 +316,12 @@ function w3_close() {
     <form method="POST" action ="dodawaniepomimaru.php">
     Wprowadź pomiar [mg/dL]: <input type = "number" name = "gl_pomiar"><br>
     Wprowadź datę: <input type = "date" name = "gl_data"><br>
-            <br>
+    Podaj godzinę pomiaru: <input type="time" name = "gl_time"><br>
+    Stan: 
+    <select name="meal">
+         <option value="Przed posilkiem">Przed posiłkiem</option>
+        <option value="Po posilku">Po posiłku</option>
+</select>           <br>
 <input type = "submit" name = "submit" value = "Dodaj pomiar">
 </form>
   </div>
@@ -304,8 +370,7 @@ window.onclick = function(event) {
 </style>
 
 <div class="footer">
-  <p>Przedstawione wyniki słuzą jedynie w celu informacji<br>Pomiary nalezy skonsutlować z lekarzem
-bądź osobą uprawnioną</p>
+  <p>Przedstawione wyniki służą jedynie w celach informacyjnych, pozostań w kontakcie z lekarzem. <br> Wartości glikemii oparto na Zaleceniach Polskiego Towarzystwa Diabetologicznego.  </p>
 </div>
 
 </body>

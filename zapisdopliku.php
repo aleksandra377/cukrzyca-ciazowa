@@ -14,7 +14,7 @@ $current_user = $_SESSION["current_user"];
 $current_gl_table = $_SESSION["current_gl_table"];
 
 
-$sql = "SELECT `pomiar`, `data_pom` FROM $current_gl_table";
+$sql = "SELECT `pomiar`, `data_pom`, `time_pom`, `meal` FROM $current_gl_table";
 $result = mysqli_query($dbconn, $sql);
 
 
@@ -28,12 +28,12 @@ if($query->num_rows > 0){
     $f = fopen('php://memory', 'w'); 
      
     // Set column headers 
-    $fields = array('pomiar', 'data_pom'); 
+    $fields = array('Pomiar', 'Data pomiaru', 'Godzina pomiaru', 'Stan'); 
     fputcsv($f, $fields, $delimiter); 
     
     // Output each row of the data, format line as csv and write to file pointer 
     while($row = $query->fetch_assoc()){ 
-        $lineData = array($row['pomiar'], $row['data_pom']); 
+        $lineData = array($row['pomiar'], $row['data_pom'], $row['time_pom'], $row['meal']); 
         fputcsv($f, $lineData, $delimiter); 
     } 
      
