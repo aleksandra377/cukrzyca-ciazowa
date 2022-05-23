@@ -16,14 +16,21 @@ session_start();
 <h1> Dodaj nowy pomiar </h1>
 
 <form method="POST" action ="dodawaniepomimaru.php">
-Wprowadź pomiar [mg/dL]: <input type = "number" name = "gl_pomiar"><br>
-Wprowadź datę: <input type = "date" name = "gl_data"><br>
-            <br>
+Wprowadź pomiar: <input type = "number" name = "gl_pomiar" placeholder = "mg/dL"><br>
+Podaj datę: <input type = "date" name = "gl_data"><br> 
+Podaj godzinę pomiaru: <input type="time" name = "gl_time"><br>
+Stan: 
+<select name="meal">
+  <option value="Przed posilkiem">Przed posiłkiem</option>
+  <option value="Po posilku">Po posiłku</option>
+</select>
+
+<br><br>
 <input type = "submit" name = "submit" value = "Dodaj pomiar">
 </form>
 
 <br>
-<a href = "./login.php"> TwĂłj profil</a> <br>
+<a href = "./login.php"> Twój profil</a> <br>
 
 </body>
 </html>
