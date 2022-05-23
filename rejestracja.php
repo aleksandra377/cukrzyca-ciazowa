@@ -9,10 +9,10 @@
 
 
         <form method="POST" action ="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <input type = "text" name = "name" placeholder = "Imię i nazwisko"> 
-            <input type = "email" name = "email" placeholder = "E-mail"> 
-            <input type = "password" name = "password" placeholder = "Hasło">
-            <input type = "text" name ="pregnancy-week" placeholder = "Tydzień ciąży">
+            <input type = "text" name = "name" placeholder = "Imię i nazwisko"> <br>
+            <input type = "email" name = "email" placeholder = "E-mail"> <br>
+            <input type = "password" name = "password" placeholder = "Hasło"> <br>
+            <input type = "text" name ="pregnancy_week" placeholder = "Tydzień ciąży"> <br>
             <br>
             <input type = "submit" name = "submit" value = "Zarejestruj">
            
@@ -76,12 +76,12 @@ $dbconn = mysqli_connect($servername, $username, $dbpassword, $dbname);
         else{
             $password = chgw($_POST["password"]);
         }
-        if (empty($_POST["pregnancy-week"]))
+        if (empty($_POST["pregnancy_week"]))
         {
-            $pregErr = "Podaj tydzień ciązy!!";
+            $pregErr = "Podaj tydzień ciązy!";
         }
         else{
-            $pregweek = chgw($_POST["pregnancy-week"]);
+            $pregweek = chgw($_POST["pregnancy_week"]);
         }
     }
 
@@ -90,22 +90,27 @@ $dbconn = mysqli_connect($servername, $username, $dbpassword, $dbname);
     $user_password = mysqli_real_escape_string($dbconn, $password);
     $user_preg_week = mysqli_real_escape_string($dbconn, $pregweek);
 
-    $user_gl = $user_fullname. "_glikemia";
+
+    $user_fullname_nowhitespaces = preg_replace('/\s+/', '', $user_fullname);
+    $user_gl = $user_fullname_nowhitespaces. "_glikemia";
 
     $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
-    if((isset($name) and isset($password)) and isset($email)){
+    if((isset($name) and isset($password)) and isset($email) and isset($pregweek)){
         mysqli_query($dbconn, "INSERT INTO users (user_fullname, user_email, user_passwordhash, gl_pomiary, user_preg_week)
          VALUES ('$user_fullname', '$user_email', '$user_password_hash', '$user_gl', '$user_preg_week')");
         echo "Rejestracja przebiegła poprawnie <br/><br/>";
+
     } else {
-        echo "<br>" .$imErr. " " .$mailErr. " " .$passErr. " " .$freeimErr. " ".$freemailErr. " ";
+        echo " " .$imErr. "<br>" .$mailErr. "<br>" .$passErr. "<br>" .$freeimErr. "<br>".$freemailErr. "<br>" .$pregErr. "<br>";
     }
 
-    mysqli_query($dbconn,"CREATE TABLE $user_gl (pomiar INT(100), data_pom DATE)");
+    mysqli_query($dbconn,"CREATE TABLE $user_gl (pomiar INT(100), data_pom DATE, time_pom TIME, meal VARCHAR(60))");
     
 ?>
 
+<br>
+<br>
 <hr style="width: 20%;">
 
 Masz juz konto? <a href = "./logowanie.php"> Zaloguj się </a><br>

@@ -69,16 +69,18 @@ $current_gl_table = $_SESSION["current_gl_table"];
     <tr>
         <th>Pomiar</th>
         <th>Data</th>
+        <th>Godzina</th>
+        <th>Stan</th>
     </tr>
 
     <?php
 
-$sql = "SELECT `pomiar`, `data_pom` FROM $current_gl_table";
+$sql = "SELECT `pomiar`, `data_pom`, `time_pom`, `meal` FROM $current_gl_table";
 $result = mysqli_query($dbconn, $sql);
 
 if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        echo"<tr><td>".$row["pomiar"]." mg/dL"."</td><td>".$row["data_pom"]."</td></tr>";
+        echo"<tr><td>".$row["pomiar"]." mg/dL"."</td><td>".$row["data_pom"]."</td><td>".$row["time_pom"]."</td><td>".$row["meal"]."</td></tr>";
     }
 } else {
         echo " brak wyników!";
