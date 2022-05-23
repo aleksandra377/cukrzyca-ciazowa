@@ -142,28 +142,94 @@ if (mysqli_num_rows($result_wyswietlanie_ponad_norma) > 0){
 </div>
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <table>
     <tr>
-        <th>Średnia z ostatniego tygodnia</th>
+        <th>Średnia z ostatnich 7 dni przed posiłkiem</th>
+        <th>Średnia z ostatnich 7 dni po posiłku</th>
     </tr>
 
     <?php
 
-    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now()";
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now() AND `meal`='Po posilku'";
     $result = mysqli_query($dbconn, $sql);
 
     if (mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
-        echo"<tr><td>".$row["AVG(`pomiar`)"]." mg/dL"."</td></tr>";}
+        echo"<tr><td>".$row["AVG(`pomiar`)"]." mg/dL"."</td>";}
+    } else {
+        echo "Brak rekordów";
+    }
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now() AND `meal`='Przed posilkiem'";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        echo"<td>".$row["AVG(`pomiar`)"]." mg/dL"."</td></tr>";}
     } else {
         echo "Brak rekordów";
     }
 ?>
-</table> 
 
-<?php
-mysqli_close($dbconn);
+<tr>
+        <th>Średnia z ostatnich 14 dni przed posiłkiem</th>
+        <th>Średnia z ostatnich 14 dni po posiłku</th>
+    </tr>
+
+    <?php
+
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-14) and now() AND `meal`='Po posilku'";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        echo"<tr><td>".$row["AVG(`pomiar`)"]." mg/dL"."</td>";}
+    } else {
+        echo "Brak rekordów";
+    }
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-14) and now() AND `meal`='Przed posilkiem'";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        echo"<td>".$row["AVG(`pomiar`)"]." mg/dL"."</td></tr>";}
+    } else {
+        echo "Brak rekordów";
+    }
+?>
+
+<tr>
+        <th>Średnia z ostatnich 30 dni przed posiłkiem</th>
+        <th>Średnia z ostatnich 30 dni po posiłku</th>
+    </tr>
+
+    <?php
+
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-30) and now() AND `meal`='Po posilku'";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        echo"<tr><td>".$row["AVG(`pomiar`)"]." mg/dL"."</td>";}
+    } else {
+        echo "Brak rekordów";
+    }
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-30) and now() AND `meal`='Przed posilkiem'";
+    $result = mysqli_query($dbconn, $sql);
+
+    if (mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+        echo"<td>".$row["AVG(`pomiar`)"]." mg/dL"."</td></tr>";}
+    } else {
+        echo "Brak rekordów";
+    }
 ?>
 
 
@@ -225,7 +291,22 @@ window.onclick = function(event) {
 
 </script>
 
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: whitesmoke;
+  color: black;
+  text-align: center;
+}
+</style>
 
+<div class="footer">
+  <p>Przedstawione wyniki słuzą jedynie w celu informacji<br>Pomiary nalezy skonsutlować z lekarzem
+bądź osobą uprawnioną</p>
+</div>
 
 </body>
 </html>
