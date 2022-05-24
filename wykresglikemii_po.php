@@ -27,7 +27,7 @@ session_start();
   <button onclick="w3_close()" class="w3-bar-item w3-large"> Zwiń menu &times;</button>
   <a href="./dzienniczekglikemia.php" class="w3-bar-item w3-button w3-hover-pink">Pomiary glikemii</a>
   <a href="./nowypomiarglikemia.php" class="w3-bar-item w3-button w3-hover-pink">Nowy pomiar glikemii</a>
-  <a href="./dzienniczekmasa" class="w3-bar-item w3-button  w3-hover-pink">Pomiary masy ciała</a>
+  <a href="./masadzienniczek" class="w3-bar-item w3-button  w3-hover-pink">Pomiary masy ciała</a>
   <a href="./login.php" class="w3-bar-item w3-button  w3-hover-pink">Strona Główna</a>
   <a href="./wyloguj.php" class="w3-bar-item w3-button  w3-hover-pink">Wyloguj się</a>
 </div>
@@ -38,7 +38,7 @@ session_start();
   <button class="w3-button w3-teal w3-xlarge w3 w3-black" onclick="w3_open()">☰</button>
   <a href="./dzienniczekglikemia.php" class="w3-bar-item w3-button w3-hover-pink">Pomiary glikemii</a>
   <a href="./nowypomiarglikemia.php" class="w3-bar-item w3-button w3-hover-pink">Nowy pomiar glikemii</a>
-  <a href="./dzienniczekmasa" class="w3-bar-item w3-button  w3-hover-pink">Pomiary masy ciała</a>
+  <a href="./masadzienniczek" class="w3-bar-item w3-button  w3-hover-pink">Pomiary masy ciała</a>
   <a href="./login.php" class="w3-bar-item w3-button  w3-hover-pink">Strona Główna</a>
   <a href="./wyloguj.php" class="w3-bar-item w3-button  w3-hover-pink">Wyloguj się</a>
   <div class="w3-container">
