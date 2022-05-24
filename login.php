@@ -65,6 +65,7 @@ if (mysqli_num_rows($query)>0) {
     {
         $_SESSION["current_user"] = $record["user_fullname"];
         $_SESSION["current_gl_table"] = $record["gl_pomiary"];
+        $_SESSION["current_m_table"] = $record["masa_tabela"];
     }
 }
 
@@ -112,7 +113,7 @@ $current_user = $_SESSION["current_user"];
 
 <h2> Masa ciała </h2>
 <div id="linki">
-<a href = "./dzienniczekmasa.php"> Twoje pomiary</a> <br>
+<a href = "./masadzienniczek.php"> Twoje pomiary</a> <br>
 <a href = "./nowypomiarmasa.php"> Dodaj nowy pomiar</a> <br> 
 </div>
 
