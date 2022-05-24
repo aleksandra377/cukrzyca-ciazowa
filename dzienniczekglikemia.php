@@ -35,7 +35,8 @@ session_start();
 <div class="w3-teal w3-black">
   <button class="w3-button w3-teal w3-xlarge w3 w3-black" onclick="w3_open()">☰</button>
   <a href="./login.php" class="w3-bar-item w3-button w3-hover-pink">Strona główna</a>
-  <a href="./wykresglikemii.php" class="w3-bar-item w3-button w3-hover-pink">Wizualizacja pomiarów</a>
+  <a href="./wykresglikemii_przed.php" class="w3-bar-item w3-button w3-hover-pink">Wizualizacja pomiarów przed posiłkiem</a>
+  <a href="./wykresglikemii_po.php" class="w3-bar-item w3-button w3-hover-pink">Wizualizacja pomiarów po posiłku</a>
   <a href="./zapisdopliku.php" class="w3-bar-item w3-button w3-hover-pink">Zapisz pomiary do pliku</a>
   <a href="#" id = "myBtn" class="w3-bar-item w3-button w3-hover-pink">Dodaj nowy pomiar</a>
 

@@ -15,7 +15,8 @@ session_start();
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="style2.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Wykres glikemii</title>
+
+    <title>Pomiary glikemii</title>
 </head>
 
 <body>
@@ -35,10 +36,18 @@ session_start();
 
 <div class="w3-teal w3-black">
   <button class="w3-button w3-teal w3-xlarge w3 w3-black" onclick="w3_open()">☰</button>
+  <a href="./dzienniczekglikemia.php" class="w3-bar-item w3-button w3-hover-pink">Pomiary glikemii</a>
+  <a href="./nowypomiarglikemia.php" class="w3-bar-item w3-button w3-hover-pink">Nowy pomiar glikemii</a>
+  <a href="./dzienniczekmasa" class="w3-bar-item w3-button  w3-hover-pink">Pomiary masy ciała</a>
+  <a href="./login.php" class="w3-bar-item w3-button  w3-hover-pink">Strona Główna</a>
+  <a href="./wyloguj.php" class="w3-bar-item w3-button  w3-hover-pink">Wyloguj się</a>
   <div class="w3-container">
 
   </div>
 </div>
+
+
+
 
 <?php
 
@@ -53,7 +62,7 @@ $current_user = $_SESSION["current_user"];
 $current_gl_table = $_SESSION["current_gl_table"];
 
 
-$sql = "SELECT `pomiar`, `data_pom` FROM $current_gl_table WHERE `pomiar`>90";
+$sql = "SELECT `pomiar`, `data_pom` FROM $current_gl_table WHERE `meal`='Po posilku' ORDER BY `data_pom` ASC";
 $result = mysqli_query($dbconn, $sql);
 
 
@@ -66,19 +75,34 @@ foreach ($result as $row) {
 
 <div class="chart-container">
   <canvas id="myChart"></canvas>
+  
 </div>
 
 
 <script>
+  
 
   const labels = <?php echo json_encode($data_pom)?>;
   var MyData = <?php echo json_encode($glikemia)?>;
+  var myColors = [];
+
+  for(i=0;i<MyData.length;i++){
+      if(MyData[i]>=70&&MyData[i]<=140){
+          myColors[i]='rgb(167,215,148)';
+      }
+      if(MyData[i]<70){
+          myColors[i]='rgb(241,216,141)';
+      }
+      if(MyData[i]>140){
+          myColors[i]='rgb(229,123,123)';
+      }
+  }
 
   const data = {
     labels: labels,
     datasets: [{
       label: 'Wykres glikemii użytkownika <?php echo $current_user ?>',
-      backgroundColor: 'rgb(229,123,123)',
+      backgroundColor: myColors,
       data: MyData,
     }]
   };
@@ -101,12 +125,11 @@ foreach ($result as $row) {
 
 </script>
 
-<button onclick="location.href = './wykresglik_norma.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary w normie</button>
-<button onclick="location.href = './wykresglik_wysoki.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary ponad normę</button>
-<button onclick="location.href = './wykresglik_niski.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary poniżej normy</button>
-<button onclick="location.href = './wykresglikemii.php';" id="myButton2" class="float-left submit-button" >Wyświetl wszystkie</button>
-
-
+<button onclick="location.href = './wykresglik_norma_po.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary w normie</button>
+<button onclick="location.href = './wykresglik_wysoki_po.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary ponad normę</button>
+<button onclick="location.href = './wykresglik_niski_po.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary poniżej normy</button>
+<button onclick="location.href = './wykresglikemii_po.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary po posiłku </button>
+<button onclick="location.href = './wykresglikemii_przed.php';" id="myButton2" class="float-left submit-button" >Wyświetl pomiary przed posiłkiem </button>
 
 
 <script>
@@ -118,7 +141,5 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 </script>
-
-
 </body>
 </html>
