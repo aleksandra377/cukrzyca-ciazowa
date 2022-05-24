@@ -220,7 +220,7 @@ if (mysqli_num_rows($result_wyswietlanie_ponizej_norma2) > 0){
 
     <?php
 
-    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now() AND `meal`='Po posilku'";
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now() AND `meal`='Przed posilkiem'";
     $result = mysqli_query($dbconn, $sql);
 
     if (mysqli_num_rows($result) > 0){
@@ -229,7 +229,7 @@ if (mysqli_num_rows($result_wyswietlanie_ponizej_norma2) > 0){
     } else {
         echo "Brak rekordów";
     }
-    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now() AND `meal`='Przed posilkiem'";
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-7) and now() AND `meal`='Po posilku'";
     $result = mysqli_query($dbconn, $sql);
 
     if (mysqli_num_rows($result) > 0){
@@ -247,7 +247,7 @@ if (mysqli_num_rows($result_wyswietlanie_ponizej_norma2) > 0){
 
     <?php
 
-    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-14) and now() AND `meal`='Po posilku'";
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-14) and now() AND `meal`='Przed posilkiem'";
     $result = mysqli_query($dbconn, $sql);
 
     if (mysqli_num_rows($result) > 0){
@@ -256,7 +256,7 @@ if (mysqli_num_rows($result_wyswietlanie_ponizej_norma2) > 0){
     } else {
         echo "Brak rekordów";
     }
-    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-14) and now() AND `meal`='Przed posilkiem'";
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-14) and now() AND `meal`='Po posilku'";
     $result = mysqli_query($dbconn, $sql);
 
     if (mysqli_num_rows($result) > 0){
@@ -274,7 +274,7 @@ if (mysqli_num_rows($result_wyswietlanie_ponizej_norma2) > 0){
 
     <?php
 
-    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-30) and now() AND `meal`='Po posilku'";
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-30) and now() AND `meal`='Przed posilkiem'";
     $result = mysqli_query($dbconn, $sql);
 
     if (mysqli_num_rows($result) > 0){
@@ -283,7 +283,7 @@ if (mysqli_num_rows($result_wyswietlanie_ponizej_norma2) > 0){
     } else {
         echo "Brak rekordów";
     }
-    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-30) and now() AND `meal`='Przed posilkiem'";
+    $sql = "SELECT AVG(`pomiar`) FROM $current_gl_table WHERE `data_pom` between adddate(now(),-30) and now() AND `meal`='Po posilku'";
     $result = mysqli_query($dbconn, $sql);
 
     if (mysqli_num_rows($result) > 0){
